@@ -37,12 +37,23 @@ $hotels = [
     ],
 ];
 $parking = $_GET['parking'] ?? '';
-$vote = $_GET['vote'];
+$vote = $_GET['vote'] ?? '';
+var_dump($vote);
 $hotelsFiltered = $hotels;
 if ($parking === 'on' || $vote !== '') {
     $hotelsFiltered = [];
     foreach ($hotels as $hotel) {
-        if ($parking === 'on') {
+        if ($vote === 'first' && $parking === 'on') {
+            $hotel['vote'] === 1 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'second' && $parking === 'on') {
+            $hotel['vote'] === 2 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'third' && $parking === 'on') {
+            $hotel['vote'] === 3 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'fourth' && $parking === 'on') {
+            $hotel['vote'] === 4 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'fifth' && $parking === 'on') {
+            $hotel['vote'] === 5 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($parking === 'on') {
             $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
         } elseif ($vote === 'first' ) {
             $hotel['vote'] === 1 ? $hotelsFiltered[] = $hotel : null;
