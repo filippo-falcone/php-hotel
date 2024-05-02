@@ -37,15 +37,15 @@ $hotels = [
     ],
 ];
 $parking = $_GET['parking'] ?? '';
-$hotelsWithParking = [];
+$hotelsFiltered = [];
 if ($parking === 'on') {
     foreach ($hotels as $hotel) {
         if ($parking === 'on') {
-            $hotel['parking'] ? $hotelsWithParking[] = $hotel : null; 
+            $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
         }
     }
 } else {
-    $hotelsWithParking = $hotels;
+    $hotelsFiltered = $hotels;
 }
 ?>
 
@@ -78,7 +78,7 @@ if ($parking === 'on') {
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($hotelsWithParking as $key => $hotel) { ?>
+                <?php foreach($hotelsFiltered as $key => $hotel) { ?>
                 <tr>
                     <th scope="row"><?php echo $key ?></th>
                     <td><?php echo $hotel['name']; ?></td>
