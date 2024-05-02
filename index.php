@@ -36,6 +36,7 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
+$parking = $_GET['parking'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -50,6 +51,11 @@ $hotels = [
 </head>
 <body>
     <div class="container">
+        <form method="get">
+            <label for="parking">Hotel con il parcheggio</label>
+            <input type="checkbox" name="parking" id="parking">
+            <button type="submit">Filtra</button>
+        </form>
         <table class="table border">
             <thead>
                 <tr>
