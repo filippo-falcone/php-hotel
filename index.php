@@ -35,7 +35,6 @@ $hotels = [
         'vote' => 2,
         'distance_to_center' => 50
     ],
-
 ];
 ?>
 
@@ -47,6 +46,29 @@ $hotels = [
     <title>PHP Hotel</title>
 </head>
 <body>
-   
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Parcheggio</th>
+                <th>Voto</th>
+                <th>Distanza dal centro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($hotels as $key => $hotel) { ?>
+            <tr>
+                <th><?php echo $key ?></th>
+                <td><?php echo $hotel['name']; ?></td>
+                <td><?php echo $hotel['description']; ?></td>
+                <td><?php echo ($hotel['parking']) ? 'Si' : 'No'; ?></td>
+                <td><?php echo $hotel['vote']; ?></td>
+                <td><?php echo $hotel['distance_to_center']; ?></td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </body>
 </html>
