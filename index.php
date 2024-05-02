@@ -44,31 +44,36 @@ $hotels = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Hotel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- /Bootstrap CSS -->
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Descrizione</th>
-                <th>Parcheggio</th>
-                <th>Voto</th>
-                <th>Distanza dal centro</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($hotels as $key => $hotel) { ?>
-            <tr>
-                <th><?php echo $key ?></th>
-                <td><?php echo $hotel['name']; ?></td>
-                <td><?php echo $hotel['description']; ?></td>
-                <td><?php echo ($hotel['parking']) ? 'Si' : 'No'; ?></td>
-                <td><?php echo $hotel['vote']; ?></td>
-                <td><?php echo $hotel['distance_to_center']; ?></td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+    <div class="container">
+        <table class="table border">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Parcheggio</th>
+                    <th scope="col">Voto</th>
+                    <th scope="col">Distanza dal centro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($hotels as $key => $hotel) { ?>
+                <tr>
+                    <th scope="row"><?php echo $key ?></th>
+                    <td><?php echo $hotel['name']; ?></td>
+                    <td><?php echo $hotel['description']; ?></td>
+                    <td><?php echo ($hotel['parking']) ? 'Si' : 'No'; ?></td>
+                    <td><?php echo $hotel['vote']; ?></td>
+                    <td><?php echo $hotel['distance_to_center']; ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
