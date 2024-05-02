@@ -37,37 +37,36 @@ $hotels = [
     ],
 ];
 $parking = $_GET['parking'] ?? '';
-$vote = $_GET['vote'] ?? '';
-var_dump($vote);
+$vote = intval($_GET['vote'] ?? '');
 $hotelsFiltered = $hotels;
-if ($parking === 'on' || $vote !== '') {
+if ($parking === 'on' || $vote !== 0) {
     $hotelsFiltered = [];
     foreach ($hotels as $hotel) {
-        if ($vote === 'first' && $parking === 'on') {
+        if ($vote === 1 && $parking === 'on') {
             $hotel['vote'] === 1 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'second' && $parking === 'on') {
+        } elseif ($vote === 2 && $parking === 'on') {
             $hotel['vote'] === 2 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'third' && $parking === 'on') {
+        } elseif ($vote === 3 && $parking === 'on') {
             $hotel['vote'] === 3 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'fourth' && $parking === 'on') {
+        } elseif ($vote === 4 && $parking === 'on') {
             $hotel['vote'] === 4 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'fifth' && $parking === 'on') {
+        } elseif ($vote === 5 && $parking === 'on') {
             $hotel['vote'] === 5 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
         } elseif ($parking === 'on') {
             $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'first' ) {
+        } elseif ($vote === 1 ) {
             $hotel['vote'] === 1 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'second') {
+        } elseif ($vote === 2) {
             $hotel['vote'] === 2 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'third') {
+        } elseif ($vote === 3) {
             $hotel['vote'] === 3 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'fourth') {
+        } elseif ($vote === 4) {
             $hotel['vote'] === 4 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 'fifth') {
+        } elseif ($vote === 5) {
             $hotel['vote'] === 5 ? $hotelsFiltered[] = $hotel : null;
-        }
-    }
-}
+        };
+    };
+};
 ?>
 
 <!DOCTYPE html>
@@ -87,11 +86,11 @@ if ($parking === 'on' || $vote !== '') {
             <input type="checkbox" name="parking" id="parking">
             <select name="vote">
                 <option value="">Seleziona un voto</option>
-                <option value="first">1</option>
-                <option value="second">2</option>
-                <option value="third">3</option>
-                <option value="fourth">4</option>
-                <option value="fifth">5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
             </select>
             <button class="btn btn-warning" type="submit">Filtra</button>
         </form>
