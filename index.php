@@ -37,15 +37,25 @@ $hotels = [
     ],
 ];
 $parking = $_GET['parking'] ?? '';
-$hotelsFiltered = [];
-if ($parking === 'on') {
+$vote = $_GET['vote'];
+$hotelsFiltered = $hotels;
+if ($parking === 'on' || $vote !== '') {
+    $hotelsFiltered = [];
     foreach ($hotels as $hotel) {
         if ($parking === 'on') {
             $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'first' ) {
+            $hotel['vote'] === 1 ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'second') {
+            $hotel['vote'] === 2 ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'third') {
+            $hotel['vote'] === 3 ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'fourth') {
+            $hotel['vote'] === 4 ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote === 'fifth') {
+            $hotel['vote'] === 5 ? $hotelsFiltered[] = $hotel : null;
         }
     }
-} else {
-    $hotelsFiltered = $hotels;
 }
 ?>
 
@@ -64,6 +74,14 @@ if ($parking === 'on') {
         <form method="get">
             <label for="parking">Hotel con il parcheggio</label>
             <input type="checkbox" name="parking" id="parking">
+            <select name="vote">
+                <option value="">Seleziona un voto</option>
+                <option value="first">1</option>
+                <option value="second">2</option>
+                <option value="third">3</option>
+                <option value="fourth">4</option>
+                <option value="fifth">5</option>
+            </select>
             <button class="btn btn-warning" type="submit">Filtra</button>
         </form>
         <table class="table border">
