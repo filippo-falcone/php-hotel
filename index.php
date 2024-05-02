@@ -37,6 +37,16 @@ $hotels = [
     ],
 ];
 $parking = $_GET['parking'] ?? '';
+$hotelsWithParking = [];
+if ($parking === 'on') {
+    foreach ($hotels as $hotel) {
+        if ($parking === 'on') {
+            $hotel['parking'] ? $hotelsWithParking[] = $hotel : null; 
+        }
+    }
+} else {
+    $hotelsWithParking = $hotels;
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +64,7 @@ $parking = $_GET['parking'] ?? '';
         <form method="get">
             <label for="parking">Hotel con il parcheggio</label>
             <input type="checkbox" name="parking" id="parking">
-            <button type="submit">Filtra</button>
+            <button class="btn btn-warning" type="submit">Filtra</button>
         </form>
         <table class="table border">
             <thead>
@@ -68,7 +78,7 @@ $parking = $_GET['parking'] ?? '';
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($hotels as $key => $hotel) { ?>
+                <?php foreach($hotelsWithParking as $key => $hotel) { ?>
                 <tr>
                     <th scope="row"><?php echo $key ?></th>
                     <td><?php echo $hotel['name']; ?></td>
