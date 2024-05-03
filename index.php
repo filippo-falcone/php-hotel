@@ -64,19 +64,25 @@ if ($parking === 'on' || $vote !== 0) {
     <!-- /Bootstrap CSS -->
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-3">
         <form method="get">
-            <label for="parking">Hotel con il parcheggio</label>
-            <input type="checkbox" name="parking" id="parking">
-            <select name="vote">
-                <option value="">Seleziona un voto</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <button class="btn btn-warning" type="submit">Filtra</button>
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <label for="parking">Hotel con il parcheggio</label>     
+                    <input class="form-check-input mt-0 ms-2" type="checkbox" name="parking" aria-label="Checkbox for following text input">
+                </div>
+                <select class="form-select" name="vote">
+                    <option value="">Seleziona un voto</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="input-group justify-content-center mb-3">
+                <button class="btn btn-warning" type="submit">Filtra</button>
+            </div>
         </form>
         <table class="table border">
             <thead>
