@@ -36,15 +36,15 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
-$parking = intval($_GET['parking'] ?? '');
+$parking = isset($_GET['parking']) && $_GET['parking'] === '1' ? true : false;
 $vote = intval($_GET['vote'] ?? '');
 $hotelsFiltered = $hotels;
-if ($parking === 1 || $vote !== 0) {
+if ($parking || $vote !== 0) {
     $hotelsFiltered = [];
     foreach ($hotels as $hotel) {
-        if ($vote !== 0 && $parking === 1) {
+        if ($vote !== 0 && $parking) {
             $hotel['vote'] === $vote && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($parking === 1) {
+        } elseif ($parking) {
             $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
         } elseif ($vote !== 0 ) {
             $hotel['vote'] === $vote ? $hotelsFiltered[] = $hotel : null;
