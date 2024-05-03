@@ -42,28 +42,12 @@ $hotelsFiltered = $hotels;
 if ($parking === 'on' || $vote !== 0) {
     $hotelsFiltered = [];
     foreach ($hotels as $hotel) {
-        if ($vote === 1 && $parking === 'on') {
-            $hotel['vote'] === 1 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 2 && $parking === 'on') {
-            $hotel['vote'] === 2 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 3 && $parking === 'on') {
-            $hotel['vote'] === 3 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 4 && $parking === 'on') {
-            $hotel['vote'] === 4 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 5 && $parking === 'on') {
-            $hotel['vote'] === 5 && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
+        if ($vote !== 0 && $parking === 'on') {
+            $hotel['vote'] === $vote && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
         } elseif ($parking === 'on') {
             $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 1 ) {
-            $hotel['vote'] === 1 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 2) {
-            $hotel['vote'] === 2 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 3) {
-            $hotel['vote'] === 3 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 4) {
-            $hotel['vote'] === 4 ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($vote === 5) {
-            $hotel['vote'] === 5 ? $hotelsFiltered[] = $hotel : null;
+        } elseif ($vote !== 0 ) {
+            $hotel['vote'] === $vote ? $hotelsFiltered[] = $hotel : null;
         };
     };
 };
