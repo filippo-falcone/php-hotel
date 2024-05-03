@@ -36,15 +36,15 @@ $hotels = [
         'distance_to_center' => 50
     ],
 ];
-$parking = $_GET['parking'] ?? '';
+$parking = intval($_GET['parking'] ?? '');
 $vote = intval($_GET['vote'] ?? '');
 $hotelsFiltered = $hotels;
-if ($parking === 'on' || $vote !== 0) {
+if ($parking === 1 || $vote !== 0) {
     $hotelsFiltered = [];
     foreach ($hotels as $hotel) {
-        if ($vote !== 0 && $parking === 'on') {
+        if ($vote !== 0 && $parking === 1) {
             $hotel['vote'] === $vote && $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
-        } elseif ($parking === 'on') {
+        } elseif ($parking === 1) {
             $hotel['parking'] ? $hotelsFiltered[] = $hotel : null;
         } elseif ($vote !== 0 ) {
             $hotel['vote'] === $vote ? $hotelsFiltered[] = $hotel : null;
@@ -68,8 +68,8 @@ if ($parking === 'on' || $vote !== 0) {
         <form method="get">
             <div class="input-group mb-3">
                 <div class="input-group-text">
-                    <label for="parking">Hotel con il parcheggio</label>     
-                    <input class="form-check-input mt-0 ms-2" type="checkbox" name="parking" aria-label="Checkbox for following text input">
+                    <input class="form-check-input me-2" type="checkbox" name="parking" value="1" aria-label="Checkbox for following text input">
+                    <label class="form-check-label" for="parking">Con parcheggio</label>     
                 </div>
                 <select class="form-select" name="vote">
                     <option value="">Seleziona un voto</option>
