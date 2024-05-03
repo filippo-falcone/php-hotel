@@ -68,16 +68,16 @@ if ($parking || $vote !== 0) {
         <form method="get">
             <div class="input-group mb-3">
                 <div class="input-group-text">
-                    <input class="form-check-input me-2" type="checkbox" name="parking" value="1" aria-label="Checkbox for following text input"  <?php echo $parking ? 'checked' : ''; ?>>
+                    <input class="form-check-input me-2" id="parking" type="checkbox" name="parking" value="1" aria-label="Checkbox for following text input" <?php echo $parking ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="parking">Con parcheggio</label>     
                 </div>
                 <select class="form-select" name="vote">
-                    <option value="">Seleziona un voto</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="0" <?php echo $vote === 0 ? 'selected' : ''; ?>>Seleziona un voto</option>
+                    <option value="1" <?php echo $vote === 1 ? 'selected' : ''; ?>>1</option>
+                    <option value="2" <?php echo $vote === 2 ? 'selected' : ''; ?>>2</option>
+                    <option value="3" <?php echo $vote === 3 ? 'selected' : ''; ?>>3</option>
+                    <option value="4" <?php echo $vote === 4 ? 'selected' : ''; ?>>4</option>
+                    <option value="5" <?php echo $vote === 5 ? 'selected' : ''; ?>>5</option>
                 </select>
             </div>
             <div class="input-group justify-content-center mb-3">
