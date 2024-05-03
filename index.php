@@ -68,7 +68,7 @@ if ($parking || $vote !== 0) {
         <form method="get">
             <div class="input-group mb-3">
                 <div class="input-group-text">
-                    <input class="form-check-input me-2" type="checkbox" name="parking" value="1" aria-label="Checkbox for following text input">
+                    <input class="form-check-input me-2" type="checkbox" name="parking" value="1" aria-label="Checkbox for following text input"  <?php echo $parking ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="parking">Con parcheggio</label>     
                 </div>
                 <select class="form-select" name="vote">
